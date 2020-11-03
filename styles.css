@@ -1,0 +1,415 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+body {
+    background-color: #1b1229;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Reference */
+/* font-family: 'Open Sans', sans-serif; */
+/* font-family: 'Knewave', cursive; */
+
+/* Debug */
+.debug {
+    background: red;
+}
+.debug-blue {
+    background: blue;
+}
+
+/* Application Wide Styles */
+.app__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.app__container {
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 15px;
+}
+
+.app__overflow-mask {
+    overflow: hidden;
+}
+
+/* Masthead Styles */
+.masthead__wrapper {
+    border-bottom: 4px solid #317ca4;
+    border-collapse: collapse;
+}
+
+.masthead__container {
+    display: flex;
+    position: relative;
+}
+
+.masthead__container--loading:after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 4px;
+    bottom: -4px;
+    background: linear-gradient(90deg, rgba(2,0,36,0) 0%, rgb(255, 255, 255) 50%,rgba(2,0,36,0) 100%);
+    animation-duration: 3s;
+    animation-name: loading;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes loading {
+    from {
+        opacity: 0;
+        left: -200px; 
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    to {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+.masthead__logo {
+    flex-grow: 3;
+}
+
+.masthead__logo a {
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.masthead__logo img {
+    padding-top: 10px;
+}
+
+.masthead__container nav,
+.masthead__logo {
+    display: flex;
+    align-items: center;
+}
+
+.masthead__navigation {
+    flex-grow: 2;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.masthead__navigation a {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: .5em 2em .5em 1em;
+    transition: .1s color;
+    position: relative;
+    
+}
+
+.masthead__navigation a span {
+    position: relative;  
+}
+
+.masthead__navigation a i {
+    position: relative;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    transition: .1s color linear;
+}
+
+.masthead__navigation a:active {
+
+}
+
+.masthead__navigation a:focus {
+
+}
+
+.masthead__navigation a:visited {
+
+}
+
+.masthead__navigation a:hover {
+    background: rgba(0,0,0,.35);
+    border-radius: 5px;
+}
+
+.masthead__navigation a:hover i.animate__rocket-launch,
+.masthead__navigation a:active i.animate__rocket-launch,
+.masthead__navigation a:focus i.animate__rocket-launch {
+    color: #317ca4;
+    animation-duration: 2s;
+    animation-name: rocket-launch;
+}
+
+@keyframes rocket-launch {
+    from {
+        bottom: 0;
+        left: 0;
+    }
+    12% {
+        bottom: 4px;
+        left: 1px;
+        transform: rotate(5deg);
+    }
+    30% {
+        bottom: 0;
+        left: 0;
+        transform: rotate(0deg);
+    }
+    45% {
+        bottom: 4px;
+        left: 1px;
+        transform: rotate(-5deg);
+    }
+    60% {
+        bottom: 0;
+        left: 0;
+        transform: rotate(0deg);
+    }
+    82% {
+        bottom: 4px;
+        left: 1px;
+    }
+    100% {
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.masthead__navigation a:hover i.animate__rocket-launch:after,
+.masthead__navigation a:active i.animate__rocket-launch:after,
+.masthead__navigation a:focus i.animate__rocket-launch:after {
+    content: "\f06d";
+    position: absolute;
+    opacity: 0;
+    left: -10px;
+    bottom: -1px;
+    right: 11px;
+    font-size: 14px;
+    color: #f99d34;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    animation-duration: 1s;
+    animation-name: rocket-flames;
+    z-index: -1;
+    transform: rotate(-110deg);
+}
+
+@keyframes rocket-flames {
+    from {
+        opacity: .75;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.masthead__navigation a:hover i.animate__cog-spin,
+.masthead__navigation a:active i.animate__cog-spin,
+.masthead__navigation a:focus i.animate__cog-spin {
+    color: #317ca4;
+    animation-duration: 5s;
+    animation-name: cog-spin;
+}
+
+@keyframes cog-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+.masthead__navigation a:hover .app__icon-wrapper--cog:after,
+.masthead__navigation a:active .app__icon-wrapper--cog:after,
+.masthead__navigation a:focus .app__icon-wrapper--cog:after {
+    content: "\f013";
+    position: absolute;
+    color: #f99d34;
+    left: -6px;
+    bottom: -6px;
+    font-size: 12px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    animation-duration: 3s;
+    animation-name: cog-spin-oposite;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    transition: .1s opacity linear;
+    opacity: 0;
+}
+
+@keyframes cog-spin-oposite {
+    from {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(-359deg);
+    }
+}
+
+.masthead__navigation a:hover i.animate__tool-box,
+.masthead__navigation a:active i.animate__tool-box,
+.masthead__navigation a:focus i.animate__tool-box {
+    color: #317ca4;
+    animation-duration: 1s;
+    animation-name: tool-box;
+}
+
+@keyframes tool-box {
+    from {
+        transform: rotate(0deg);
+        bottom: 0;
+    }
+    25% {
+        transform: rotate(-10deg);
+        bottom: 4px;
+    }
+    50% {
+        transform: rotate(0deg);
+        bottom: 0;
+    }
+    75% {
+        transform: rotate(10deg);
+        bottom: 4px;
+    }
+    to {
+        transform: rotate(0deg);
+        bottom: 0;
+    }
+}
+
+.masthead__navigation a:hover i.animate__wizzard-hat,
+.masthead__navigation a:active i.animate__wizzard-hat,
+.masthead__navigation a:focus i.animate__wizzard-hat {
+    color: #317ca4;
+    opacity: 1;
+}
+
+.masthead__navigation a:hover i.animate__wizzard-hat:after,
+.masthead__navigation a:active i.animate__wizzard-hat:after,
+.masthead__navigation a:focus i.animate__wizzard-hat:after {
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 10px;
+    color: #f99d34;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    animation-duration: 2s;
+    animation-name: wizzard-hat-star-two;
+    z-index: -1;
+}
+
+@keyframes wizzard-hat-star-two {
+    from {
+        opacity: 0;
+        right: -10px;
+        top: 0px;
+    }
+    10% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+        right: 30px;
+        top: 10px;
+    }
+}
+
+.masthead__navigation i {
+    color: #f99d34;
+    display: inline-block;
+    font-size: 20px;
+    margin-right: 7px;
+}
+
+.masthead__social {
+    flex-grow: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.masthead__social a {
+    color: #fff;
+    display: inline-block;
+    padding: .35em;
+    font-size: 26px;
+    transition: .1s transform;
+}
+
+.masthead__social a:hover,
+.masthead__social a:active,
+.masthead__social a:focus {
+    transform: scale(1.2);
+}
+
+.masthead__social a:nth-child(3) {
+    font-size: 29px;
+}
